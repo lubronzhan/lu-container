@@ -31,6 +31,7 @@ func parent() {
 }
 
 func child() {
+	fmt.Printf("running child pid:%d %v\n", os.Getpid(), os.Args[2:])
 	cmd := exec.Command(os.Args[2], os.Args[3:]...)
 	cmd.Stdin, cmd.Stdout, cmd.Stderr = os.Stdin, os.Stdout, os.Stderr
 	wrapError(cmd.Run())
