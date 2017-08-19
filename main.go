@@ -35,8 +35,8 @@ func child() {
 	cmd := exec.Command(os.Args[2], os.Args[3:]...)
 	cmd.Stdin, cmd.Stdout, cmd.Stderr = os.Stdin, os.Stdout, os.Stderr
 
-	wrapError(syscall.Mount("proc", "/proc", "proc", 0, ""))
 	wrapError(syscall.Chroot("/home/kubo/os/ubuntu"))
+	wrapError(syscall.Mount("proc", "/proc", "proc", 0, ""))
 
 	wrapError(cmd.Run())
 
